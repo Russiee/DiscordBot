@@ -57,3 +57,4 @@ jobs:
           service: discord-bot
           cluster: arn:aws:ecs:eu-west-1:206890211931:cluster/discord-bot
           wait-for-service-stability: true
+          
