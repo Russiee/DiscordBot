@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.demo.listeners.PingListener;
 import com.example.demo.listeners.RaceListener;
 import com.example.demo.listeners.RateListener;
+import com.example.demo.listeners.UserListener;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class DiscordBotApplication {
 	@Autowired
 	private RaceListener raceListener;
 
+	@Autowired
+	private UserListener userListener;
+
 	public static void main(String[] args) {
 		SpringApplication.run(DiscordBotApplication.class, args);
 	}
@@ -44,6 +48,7 @@ public class DiscordBotApplication {
 		api.addMessageCreateListener(pingListener);
 		api.addMessageCreateListener(rateListener);
 		api.addMessageCreateListener(raceListener);
+		api.addMessageCreateListener(userListener);
 		return api;
 	}
 }
