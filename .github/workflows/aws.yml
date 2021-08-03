@@ -39,6 +39,11 @@ jobs:
           # Build a docker container and push to ECR so it can be deployed to ECS
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
           --build-arg TOKEN_ARG=${{ secrets.TOKEN }} \
+          --build-arg MYSQL_HOST_ARG=${{ secrets.MYSQL_HOST }} \
+          --build-arg MYSQL_PORT_ARG=${{ secrets.MYSQL_PORT }} \
+          --build-arg MYSQL_DB_ARG=${{ secrets.MYSQL_DB }} \
+          --build-arg DB_USER_ARG=${{ secrets.DB_USER }} \
+          --build-arg DB_PASS_ARG=${{ secrets.DB_PASS }} .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
